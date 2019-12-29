@@ -99,7 +99,7 @@ class UserController extends ApiController
         }
 
         if(!$user->isDirty()) {
-            return $this->errorResponse('You need to specify a different value to update', 422)
+            return $this->errorResponse('You need to specify a different value to update', 422);
         }
 
         $user->save();
