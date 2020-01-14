@@ -1,5 +1,9 @@
 <?php
 
+use App\User;
+use App\Product;
+use App\Category;
+use App\Transaction;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
 
@@ -14,11 +18,18 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        /*DB::statement('SET FOREIGN_KEY_CHECKS = 0');
+        DB::statement('SET FOREIGN_KEY_CHECKS = 0');
 
-        foreach($this->toTruncate as $table) {
-            DB::table($table)->truncate();
-        }*/
+        User::truncate();
+        Category::truncate();
+        Product::truncate();
+        Transaction::truncate();
+        DB::table('category_product')->truncate();
+
+        User::flushEventListeners();
+        Category::flushEventListeners();
+        Product::flushEventListeners();
+        Transaction::flushEventListeners();
 
         $this->call([
             UsersTableSeeder::class,
