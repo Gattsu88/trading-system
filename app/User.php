@@ -2,6 +2,7 @@
 
 namespace App;
 
+use App\Transformers\UserTransformer;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Foundation\Auth\User as Authenticatable;
@@ -16,6 +17,8 @@ class User extends Authenticatable
     const UNVERIFIED_USER = '0';
     const ADMIN_USER = 'true';
     const REGULAR_USER = 'false';
+
+    public $transformer = UserTransformer::class;
 
     protected $table = 'users'; /* Solves migration problem "table sellers doesn't exist" */
     protected $dates = ['deleted_at'];
