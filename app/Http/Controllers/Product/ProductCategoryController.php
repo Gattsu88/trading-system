@@ -8,7 +8,7 @@ use App\Product;
 use Illuminate\Http\Request;
 
 class ProductCategoryController extends ApiController
-{
+{z
     /**
      * Display a listing of the resource.
      *
