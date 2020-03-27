@@ -2,6 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
+      <module fileurl="file://$PROJECT_DIR$/../event-calendar/.idea/event-calendar.iml" filepath="$PROJECT_DIR$/../event-calendar/.idea/event-calendar.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/trading-system.iml" filepath="$PROJECT_DIR$/.idea/trading-system.iml" />
     </modules>
   </component>
