@@ -31,11 +31,21 @@ class DatabaseSeeder extends Seeder
         Product::flushEventListeners();
         Transaction::flushEventListeners();
 
-        $this->call([
+        /*$this->call([
             UsersTableSeeder::class,
             CategoriesTableSeeder::class,
             ProductsTableSeeder::class,
             TransactionsTableSeeder::class
-        ]);
+        ]);*/
+
+        User::factory(20)->create();
+        Category::factory(10)->create();
+        Product::factory(50)->create()->each(
+            function($product) {
+                $categories = Category::all()->random(mt_rand(1, 5))->pluck('id');
+                $product->categories()->attach($categories);
+            }
+        );
+        Transaction::factory(50)->create();
     }
 }

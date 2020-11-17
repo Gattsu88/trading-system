@@ -1,18 +1,34 @@
 <?php
 
-/** @var \Illuminate\Database\Eloquent\Factory $factory */
+namespace Database\Factories;
 
 use App\Seller;
 use App\Transaction;
 use App\User;
-use Faker\Generator as Faker;
+use Illuminate\Database\Eloquent\Factories\Factory;
 
-$factory->define(Transaction::class, function (Faker $faker) {
-    $seller = Seller::has('products')->get()->random();
-    $buyer = User::all()->except($seller->id)->random();
-    return [
-        'quantity' => $faker->numberBetween(1, 3),
-        'buyer_id' => $buyer->id,
-        'product_id' => $seller->products->random()->id
-    ];
-});
+class TransactionFactory extends Factory
+{
+    /**
+     * The name of the factory's corresponding model.
+     *
+     * @var string
+     */
+    protected $model = Transaction::class;
+
+    /**
+     * Define the model's default state.
+     *
+     * @return array
+     */
+    public function definition()
+    {
+        $seller = Seller::has('products')->get()->random();
+        $buyer = User::all()->except($seller->id)->random();
+        return [
+            'quantity' => $this->faker->numberBetween(1, 3),
+            'buyer_id' => $buyer->id,
+            'product_id' => $seller->products->random()->id
+        ];
+    }
+}
